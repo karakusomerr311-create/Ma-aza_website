@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Mağaza</title>
+</head>
+<body>
+      <!-- * Header -->
+    <header class="header">
+      <a href="#" class="logo">
+        <img src="./images/LOGO FOTO.jpeg" alt="">
+      </a>
+      <nav class="navbar">
+        <a href="#Home">Ana sayfa</a>
+        <a href="#products">Ürünler</a>
+        <a href="#Abount">Hakında</a>        
+        <a href="#Review">Yorumlar</a>
+        <a href="#contact">iletişim</a>
+        
+      </nav>
+
+      <div class="Butonlar">
+        <button id="search-btn">
+          <!-- ARAMA BUTONU -->
+          <i class="fas fa-search"></i>
+        </button>
+        <a id="cart-btn" href="cart.html">
+          <i class="fas fa-shopping-cart"></i> <!-- SEPET BUTONU-->
+        </a>
+        <button id="menu-btn">
+          <i class="fas fa-bars"></i> <!-- MENÜ BUTONU-->
+        </button>
+      </div>
+
+      <div class="search-form">
+        <input
+          type="text"
+          class="search-input"
+          id="search-box"
+          placeholder="search here"
+        />
+        <i class="fas fa-search"></i>
+      </div>
+
+      <div class="cart-items-container"></div>
+    </header>
+    <!-- * Home -->
+    <section class="home" id="Home">
+      <div class="content">
+        <h3>Kaliteli Ürünler ile Sizlerleyiz</h3>
+        <p>
+          En kaliteli kumaşlar ve kusursuz işçilik ile üretilen ürünlerimiz konfor ve şıklığı aynı anda sunar
+          Tarzınızı yansıtan özel tasarımlar için doğru yerdesiniz...
+        </p>
+        <a href="#" class="btn">Alışverişe Başla</a>
+      </div>
+    </section>
+    <!-- * Menu -->
+    <section class="menu" id="products">
+      <h1 class="heading">ÜRÜNLER</h1>
+      <div class="box-container">
+        <div class="box">
+          <div class="box-head">
+            <img src="images/oversize erkek tişort.jpg" alt="menu" />
+            <span class="menu-category"> Erkek  Tişort</span>
+            <h3>Oversize Erkek Siyah Tişort</h3>
+            <div class="price">350 TL <span>400 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Oversize Erkek Beyaz Tişort.jpg" alt="menu" />
+            <span class="menu-category">Erkek Tişort</span>
+            <h3>Oversize Erkek Beyaz Tişort</h3>
+            <div class="price">250 TL <span>300 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle </a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Oversize Erkek Gri Tişort.jpg" alt="menu" />
+            <span class="menu-category">Erkek Tişort</span>
+            <h3> Oversize Erkek Gri Tişort</h3>
+            <div class="price">270 TL <span>300 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle </a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Beyaz Keten Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Beyaz Gömlek</h3>
+            <div class="price">600 TL <span>650 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div>
+         <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Keten Siyah Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Siyah Gömlek</h3>
+            <div class="price">650 TL <span>750 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div> 
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Lacıvert keten erkek gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Beyaz Gömlek</h3>
+            <div class="price">700 TL <span>780 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div> 
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Keten Bej Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Bej Gömlek</h3>
+            <div class="price">800 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Buz Rengi Keten Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Buz Rengi Gömlek</h3>
+            <div class="price">800 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Kahverengi Keten Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Kahverengi Gömlek</h3>
+            <div class="price">1100TL <span>1299.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div>
+         
+        
+      </div>
+    </section>
+
+    <script src="./index.js"></script>
+</body>
+</html>
