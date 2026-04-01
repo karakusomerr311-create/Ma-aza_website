@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Mağaza</title>
+    <script src="./auth.js"></script>
+    <script>
+      if (window.shopAuth) shopAuth.requireAuthRedirect();
+    </script>
+</head>
+<body>
+      <!-- * Header -->
+    <header class="header">
+      <a href="#" class="logo">
+        <img src="./images/LOGO FOTO.jpeg" alt="">
+      </a>
+      <nav class="navbar">
+        <a href="#Home">Ana sayfa</a>
+        <a href="#products">Ürünler</a>
+        <a href="#Abount">Hakında</a>        
+        <a href="#Review">Yorumlar</a>
+        <a href="#contact">iletişim</a>
+        
+      </nav>
+
+      <div class="Butonlar">
+        <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link" style="display: none">Hesabım</a>
+        <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+        <a href="login.html" class="auth-nav-link" id="auth-login-link">Giriş</a>
+        <a href="register.html" class="auth-nav-link" id="auth-register-link">Kayıt Ol</a>
+        <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
+          Çıkış
+        </button>
+        <button id="search-btn">
+          <!-- ARAMA BUTONU -->
+          <i class="fas fa-search"></i>
+        </button>
+        <a id="cart-btn" href="cart.html">
+          <i class="fas fa-shopping-cart"></i> <!-- SEPET BUTONU-->
+        </a>
+        <button id="menu-btn">
+          <i class="fas fa-bars"></i> <!-- MENÜ BUTONU-->
+        </button>
+      </div>
+
+      <div class="search-form">
+        <input
+          type="text"
+          class="search-input"
+          id="search-box"
+          placeholder="search here"
+        />
+        <i class="fas fa-search"></i>
+      </div>
+
+      <div class="cart-items-container"></div>
+    </header>
+    <!-- * Home -->
+    <section class="home" id="Home">
+      <div class="content">
+        <h3>Kaliteli Ürünler ile Sizlerleyiz</h3>
+        <p>
+          En kaliteli kumaşlar ve kusursuz işçilik ile üretilen ürünlerimiz konfor ve şıklığı aynı anda sunar
+          Tarzınızı yansıtan özel tasarımlar için doğru yerdesiniz...
+        </p>
+        <a href="#" class="btn">Alışverişe Başla</a>
+      </div>
+    </section>
+    <!-- * Menu -->
+    <section class="menu" id="products">
+      <h1 class="heading">ÜRÜNLER</h1>
+      <div class="product-controls">
+        <div class="control-item">
+          <label for="category-filter">Kategori</label>
+          <select id="category-filter" class="search-input">
+            <option value="all">Tüm Kategoriler</option>
+          </select>
+        </div>
+        <div class="control-item">
+          <label for="product-search">Ürün Ara</label>
+          <input
+            type="text"
+            id="product-search"
+            class="search-input"
+            placeholder="Ürün adı veya kategori yaz..."
+          />
+        </div>
+      </div>
+      <p id="product-result-info" class="product-result-info"></p>
+      <div class="box-container">
+        <div class="box">
+          <div class="box-head">
+            <img src="images/oversize erkek tişort.jpg" alt="menu" />
+            <span class="menu-category"> Erkek  Tişort</span>
+            <h3>Oversize Erkek Siyah Tişort</h3>
+            <div class="price">350 TL <span>400 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Oversize Erkek Beyaz Tişort.jpg" alt="menu" />
+            <span class="menu-category">Erkek Tişort</span>
+            <h3>Oversize Erkek Beyaz Tişort</h3>
+            <div class="price">250 TL <span>300 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle </a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Oversize Erkek Gri Tişort.jpg" alt="menu" />
+            <span class="menu-category">Erkek Tişort</span>
+            <h3> Oversize Erkek Gri Tişort</h3>
+            <div class="price">270 TL <span>300 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle </a>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Beyaz Keten Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Beyaz Gömlek</h3>
+            <div class="price">600 TL <span>650 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div>
+         <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Keten Siyah Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Siyah Gömlek</h3>
+            <div class="price">650 TL <span>750 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div> 
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Lacıvert keten erkek gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Beyaz Gömlek</h3>
+            <div class="price">700 TL <span>780 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+        </div> 
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Keten Bej Gömlek.jpg" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3> Keten Erkek Bej Gömlek</h3>
+            <div class="price">800 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+           <div class="box">
+          <div class="box-head">
+            <img src="images/erkek siyah Bantolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Bantolon</span>
+            <h3>  Erkek Siyah Bantolon</h3>
+            <div class="price">840 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div> <div class="box">
+          <div class="box-head">
+            <img src="images/erkek kahverengi bantolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Bantolon</span>
+            <h3>  Erkek Kahverengi bantolon</h3>
+            <div class="price">830 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div> <div class="box">
+          <div class="box-head">
+            <img src="images/erkek beyaz bantolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Bantolon</span>
+            <h3>  Erkek Beyaz bantolon</h3>
+            <div class="price">750TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div> <div class="box">
+          <div class="box-head">
+            <img src="images/erkek bej Bantolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Gömlek</span>
+            <h3>  Erkek Bej Bantolon</h3>
+            <div class="price">850 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+        <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Siyah Kot Pantolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Pantolon</span>
+            <h3>  Erkek Siyah Pantolon</h3>
+            <div class="price">600TL <span>700TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+      <div class="box">
+          <div class="box-head">
+            <img src="images/erkek siyah Bantolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Pantolon</span>
+            <h3>  Erkek kot SiyahPantolon</h3>
+            <div class="price">700TL <span>790.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+      <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Gri Kot Psntolon.webp" alt="menu" />
+            <span class="menu-category">Erkek Pabtolon</span>
+            <h3>  Erkek gri Pantolon</h3>
+            <div class="price">630 TL <span>699.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Buz Mavisi Ceket.webp" alt="menu" />
+            <span class="menu-category">Erkek Ceket</span>
+            <h3>  Erkek Buz Mavisi Ceket</h3>
+            <div class="price">750 TL <span>790.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/erkek siyah kot ceket.webp" alt="menu" />
+            <span class="menu-category">Erkek Ceket</span>
+            <h3>  Erkek Siyah Ceket</h3>
+            <div class="price">850 TL <span>899.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/erkek yeşil kot ceket.webp" alt="menu" />
+            <span class="menu-category">Erkek Ceket</span>
+            <h3>  Erkek Yeşil Ceket</h3>
+            <div class="price">1100TL <span>1200.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/erkek bej kazak.webp" alt="menu" />
+            <span class="menu-category">Erkek Kazak</span>
+            <h3>  Erkek Bej Kazak</h3>
+            <div class="price">350 TL <span>449.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/erkek gri kazak.webp" alt="menu" />
+            <span class="menu-category">Erkek Kazak</span>
+            <h3>  Erkek Gri Kazak</h3>
+            <div class="price">500 TL <span>559.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/erkek siyah kazak.webp" alt="menu" />
+            <span class="menu-category">Erkek Kazak</span>
+            <h3>  Erkek Siyah Kazak</h3>
+            <div class="price">550TL <span>658.49 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/erkek yeşil kazak.webp" alt="menu" />
+            <span class="menu-category">Erkek Kazak</span>
+            <h3>  Erkek Yeşil Kazak</h3>
+            <div class="price">275 TL <span>349.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Spor Ayakabı Günlük Kulanım.webp" alt="menu" />
+            <span class="menu-category">Erkek Ayakabı</span>
+            <h3>  Erkek Spor Ayakabı Günlük Kulanım</h3>
+            <div class="price">1560 TL <span>1749.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Kalın Taban Beyaz Lacivert Erkek Snekaer Ayakabı.webp" alt="menu" />
+            <span class="menu-category">Erkek ayakabı</span>
+            <h3>  Kalın Taban Beyaz Lacivert Erkek Snekaer ayakabı</h3>
+            <div class="price">1300TL <span>1450.49TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Unisex Siyah Spor Ayakkabı.webp" alt="menu" />
+            <span class="menu-category">Erkek Ayakabı</span>
+            <h3>  Erkek Unisex Siyah Spor Ayakabı</h3>
+            <div class="price">950TL <span>1049.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Runy Hakiki Deri Eva Taban Günlük Bot.webp" alt="menu" />
+            <span class="menu-category">Erkek Kışlık Bot</span>
+            <h3>  Erkek Runy Hakiki Deri Eva Taban Günlük Bot </h3>
+            <div class="price">4500 TL <span>4999.99 TL</span></div>
+          </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Lacivert Erkek Eşofman Altı.webp" alt="menu" />
+            <span class="menu-category">Erkek Eşofman</span>
+            <h3> Lacivert Erkek Eşofman Altı  </h3>
+            <div class="price">400TL <span>530 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Nakışlı Cizgili Eşofman.webp" alt="menu" />
+            <span class="menu-category">Erkek Eşofman</span>
+            <h3>  Nakışlı Cizgili Eşofman </h3>
+            <div class="price">350TL <span>400.99TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Polar Kumaş Erkek Eşofmanı.webp" alt="menu" />
+            <span class="menu-category">Erkek Eşofman</span>
+            <h3>  Polar Kumaş Erkek Eşofmanı </h3>
+            <div class="price">250TL <span>299.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Düz Paca Kesim Eşofman Altı.webp" alt="menu" />
+            <span class="menu-category">Erkek Eşofman</span>
+            <h3>  Erkek  Düz Paca Kesim Eşofman Altı </h3>
+            <div class="price">700TL <span>799.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Frank Martin Erkek Saat Ve Tespih Çakmak Seti.webp" alt="menu" />
+            <span class="menu-category">Erkek Saat</span>
+            <h3>  Frank Martin Erkek Saat Ve Tespih Çakmak Seti</h3>
+            <div class="price">1700TL <span>1999.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Orijinal Paslanmaz Çellik Erkek Saati.webp" alt="menu" />
+            <span class="menu-category">Erkek Saat</span>
+            <h3> Orijinal Paslanmaz Çellik Erkek Saati </h3>
+            <div class="price">2000TL <span>2300.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/S.Polo Gümüş Erkek Kol Saati.webp" alt="menu" />
+            <span class="menu-category">Erkek Saat</span>
+            <h3>  S.Polo Gümüş Erkek Kol Saati </h3>
+            <div class="price">3000TL <span>3200.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/6 Adet Set Paslanmaz Çellik Erkek Zincir Bileklik Seti.webp" alt="menu" />
+            <span class="menu-category">Erkek Bileklik</span>
+            <h3>  Erkek 6 Adet Set Paslanmaz Çellik Erkek Zincir Bileklik Seti</h3>
+            <div class="price">190TL <span>249.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Kişiye Özel İsimli Çellik Bileklik.webp" alt="menu" />
+            <span class="menu-category">Erkek Bileklik</span>
+            <h3> Erkek Kişiye Özel İsimli Çellik Bileklik</h3>
+            <div class="price">149TL <span>299.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Deri Bileklik.webp" alt="menu" />
+            <span class="menu-category">Erkek Bileklik</span>
+            <h3>  Erkek Deri Bileklik </h3>
+            <div class="price">150TL <span>200.49 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+          <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek 3.5 Cm Kahverengi Kemer.webp" alt="menu" />
+            <span class="menu-category">Erkek Kemer</span>
+            <h3>  Erkek 3.5 Cm Kahverengi Kemer </h3>
+            <div class="price">600TL <span>749.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+           <div class="box">
+          <div class="box-head">
+            <img src="images/Erkek Deri Siyah Kemer.webp" alt="menu" />
+            <span class="menu-category">Erkek Kemer</span>
+            <h3>  Erkek Deri Siyah Kemer </h3>
+            <div class="price">550TL <span>749.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+           <div class="box">
+          <div class="box-head">
+            <img src="images/3.5 Cm Koyu Bej Kemer.webp" alt="menu" />
+            <span class="menu-category">Erkek Kemer</span>
+            <h3>  Erkek 3.5 Cm Koyu Bej Kemer </h3>
+            <div class="price">300TL <span>349.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+           <div class="box">
+          <div class="box-head">
+            <img src="images/Bozkurt Desenli Osmanlı Tuğrası Erkek Yüzük.webp" alt="menu" />
+            <span class="menu-category">Erkek Yüzük</span>
+            <h3>  Erkek Bozkurt Desenli Osmanlı Tuğrası Erkek Yüzük </h3>
+            <div class="price">2100TL <span>2399.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+           <div class="box">
+          <div class="box-head">
+            <img src="images/Kırmızı Yakut Yüzük.webp" alt="menu" />
+            <span class="menu-category">Erkek Yüzük</span>
+            <h3>  Erkek Kırmızı Yakut Yüzük </h3>
+            <div class="price">5700TL <span>6999.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+           <div class="box">
+          <div class="box-head">
+            <img src="images/Osmanlı Tuğralı Kelime-i Tevhit Erkek Yüzük.webp" alt="menu" />
+            <span class="menu-category">Erkek Yüzük</span>
+            <h3>  Erkek Osmanlı Tuğralı Kelime-i Tevhit Erkek Yüzük</h3>
+            <div class="price">4500TL <span>4799.99 TL</span></div>
+             </div>
+          <div class="box-bottom">
+            <a href="#" class="btn">Sepete Ekle</a>
+          </div>
+          </div>
+    </section>
+    <script src="./index.js"></script>
+</body>
+</html>

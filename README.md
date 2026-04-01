@@ -1,0 +1,2 @@
+## görsel tanıtım
+[bütün detaylar gösterilmiştir](/görsel_tanıtım.png)

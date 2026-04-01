@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Sepetim</title>
+  <script src="./auth.js"></script>
+  <script>
+    if (window.shopAuth) shopAuth.requireAuthRedirect();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="./images/LOGO FOTO.jpeg" alt="logo" />
+    </a>
+    <nav class="navbar">
+      <a href="index.html#Home">Ana sayfa</a>
+      <a href="index.html#products">Ürünler</a>
+      <a href="index.html#Abount">Hakkında</a>
+      <a href="index.html#Review">Yorumlar</a>
+      <a href="index.html#contact">İletişim</a>
+    </nav>
+    <div class="Butonlar">
+      <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link" style="display: none">Hesabım</a>
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+      <a href="login.html" class="auth-nav-link" id="auth-login-link">Giriş</a>
+      <a href="register.html" class="auth-nav-link" id="auth-register-link">Kayıt Ol</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
+        Çıkış
+      </button>
+      <a href="index.html" id="back-btn" class="btn">Alışverişe dön</a>
+    </div>
+  </header>
+
+  <section class="cart-page" id="cart">
+    <div class="cart-layout">
+      <div class="cart-main">
+        <div class="cart-main-header">
+          <h1 class="heading">Sepetim</h1>
+          <p class="cart-subtitle">
+            Seçtiğiniz ürünlerin özetini buradan görüntüleyebilir ve düzenleyebilirsiniz.
+          </p>
+        </div>
+
+        <div id="cart-list" class="cart-list">
+          <!-- JS ile doldurulacak -->
+        </div>
+      </div>
+
+      <aside class="cart-summary">
+        <div class="cart-summary-card">
+          <h2>Sipariş Özeti</h2>
+          <div class="cart-summary-row">
+            <span>Ara Toplam</span>
+            <span id="cart-total">0 TL</span>
+          </div>
+          <div class="cart-summary-row cart-summary-row-muted">
+            <span>Kargo</span>
+            <span>Kasada hesaplanacak</span>
+          </div>
+          <div class="cart-summary-divider"></div>
+          <div class="cart-summary-row cart-summary-row-strong">
+            <span>Genel Toplam</span>
+            <span id="cart-total-display">0 TL</span>
+          </div>
+
+          <button id="cart-clear" class="btn cart-clear-btn">Sepeti Temizle</button>
+          <button class="btn cart-checkout-btn" disabled>
+            Güvenli ödeme yakında aktif
+          </button>
+        </div>
+        <p class="cart-info-text">
+          Satın alma adımı şu an için örnek olarak gösterilmektedir. Tasarımı koruyarak daha sonra gerçek ödeme entegrasyonu ekleyebilirsiniz.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <script src="./cart.js"></script>
+</body>
+</html>
+

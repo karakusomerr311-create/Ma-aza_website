@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Admin paneli</title>
+  <script src="./auth.js"></script>
+  <script>
+    if (window.shopAuth) shopAuth.requireAdminRedirect();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="./images/LOGO FOTO.jpeg" alt="logo" />
+    </a>
+    <nav class="navbar">
+      <a href="index.html#Home">Mağaza</a>
+      <a href="user-panel.html">Kullanıcı paneli</a>
+    </nav>
+    <div class="Butonlar">
+      <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link">Hesabım</a>
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link">Admin</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn">
+        Çıkış
+      </button>
+    </div>
+  </header>
+
+  <section class="panel-page panel-page--admin">
+    <div class="panel-header-block">
+      <h1 class="panel-title">Admin paneli</h1>
+      <p class="panel-intro">
+        Yönetici olarak giriş yaptınız. Aşağıda özet istatistikler ve kısayollar yer alır.
+      </p>
+    </div>
+
+    <div class="admin-stats">
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">Kayıtlı kullanıcı</span>
+        <span class="admin-stat-value" id="admin-user-count">0</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">Yönetici</span>
+        <span class="admin-stat-value" id="admin-admin-count">0</span>
+      </div>
+    </div>
+
+    <div class="panel-grid panel-grid--admin">
+      <article class="panel-card">
+        <div class="panel-card-icon"><i class="fas fa-box"></i></div>
+        <h2>Ürünler</h2>
+        <p>Ürünler ana sayfadaki HTML ile tanımlıdır; canlı düzenleme için backend gerekir.</p>
+        <a href="index.html#products" class="btn panel-card-btn">Ürünleri gör</a>
+      </article>
+      <article class="panel-card">
+        <div class="panel-card-icon"><i class="fas fa-users"></i></div>
+        <h2>Kullanıcılar</h2>
+        <p>Kayıtlı kullanıcılar tarayıcıda (localStorage) saklanır; üretimde veritabanı kullanılmalıdır.</p>
+      </article>
+      <article class="panel-card">
+        <div class="panel-card-icon"><i class="fas fa-chart-line"></i></div>
+        <h2>Raporlar</h2>
+        <p>Örnek panel; satış raporları için API entegrasyonu eklenebilir.</p>
+      </article>
+    </div>
+
+    <div class="admin-demo-note">
+      <strong>Demo giriş:</strong>
+      <code>admin@demo.com</code> / <code>admin123</code>
+      (ilk yüklemede otomatik oluşturulur.)
+    </div>
+  </section>
+
+  <script src="./admin.js"></script>
+</body>
+</html>
