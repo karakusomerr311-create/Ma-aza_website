@@ -13,6 +13,7 @@
   />
   <title>Hesabım</title>
   <script src="./auth.js"></script>
+  <script src="./tracking.js"></script>
   <script>
     if (window.shopAuth) shopAuth.requireAuthRedirect();
   </script>
@@ -64,6 +65,14 @@
         <p>Gerçek bir mağazada burada sipariş geçmişi listelenir.</p>
       </article>
     </div>
+
+    <div class="panel-header-block" style="margin-top: 2.5rem">
+      <h2 class="panel-title" style="font-size: 2.2rem">Sipariş takibi</h2>
+      <p class="panel-intro">
+        Yönetici tarafından eklenen kargo ve sipariş durumları burada görünür.
+      </p>
+    </div>
+    <div id="user-tracking-root" class="user-tracking-list"></div>
   </section>
 
   <script src="./user-panel.js"></script>

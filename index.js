@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-<<<<<<< HEAD
   const productBoxes = Array.from(document.querySelectorAll(".menu .box"));
   const categoryFilterEl = document.getElementById("category-filter");
   const productSearchEl = document.getElementById("product-search");
   const productResultInfoEl = document.getElementById("product-result-info");
 
-=======
->>>>>>> d3bce0c34849548a2bffe802751ad939ed22f41c
   // Ürünü sepete ekler ve localStorage'da saklar
   function addToCart(product) {
     const storageKey = "cartItems";
@@ -90,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const initialItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
   renderMiniCart(initialItems);
 
-<<<<<<< HEAD
   function normalizeText(value) {
     return (value || "")
       .toString()
@@ -157,10 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Menüdeki tüm ürün kartlarına "Sepete Ekle" olayını bağla
   productBoxes.forEach((box) => {
-=======
-  // Menüdeki tüm ürün kartlarına "Sepete Ekle" olayını bağla
-  document.querySelectorAll(".menu .box").forEach((box) => {
->>>>>>> d3bce0c34849548a2bffe802751ad939ed22f41c
     const nameEl = box.querySelector(".box-head h3");
     const priceEl = box.querySelector(".box-head .price");
     const imgEl = box.querySelector(".box-head img");

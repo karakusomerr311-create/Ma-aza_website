@@ -15,7 +15,7 @@
   <script src="./auth.js"></script>
   <script>
     if (window.shopAuth && shopAuth.isLoggedIn()) {
-      location.replace("index.html");
+      location.replace(shopAuth.isAdmin() ? "admin.html" : "index.html");
     }
   </script>
 </head>

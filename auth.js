@@ -1,6 +1,7 @@
 (function () {
   const USERS_KEY = "shopUsers";
   const SESSION_KEY = "shopSession";
+  const ADMIN_EMAIL = "admin@gmail.com";
 
   function hashPassword(password) {
     return btoa(unescape(encodeURIComponent(password)));
@@ -32,17 +33,25 @@
 
   function ensureDefaultAdmin() {
     var users = getUsers();
+    var changed = false;
+    users.forEach(function (u) {
+      if (u.email !== ADMIN_EMAIL && u.role === "admin") {
+        u.role = "user";
+        changed = true;
+      }
+    });
     var hasAdmin = users.some(function (u) {
-      return u.role === "admin";
+      return u.email === ADMIN_EMAIL;
     });
     if (!hasAdmin) {
       users.push({
-        email: "admin@demo.com",
+        email: ADMIN_EMAIL,
         passwordHash: hashPassword("admin123"),
         role: "admin",
       });
-      saveUsers(users);
+      changed = true;
     }
+    if (changed) saveUsers(users);
   }
 
   function getSession() {
@@ -84,7 +93,8 @@
   }
 
   function isAdmin() {
-    return currentUserRole() === "admin";
+    var s = getSession();
+    return !!(s && s.email === ADMIN_EMAIL && s.role === "admin");
   }
 
   function getCurrentPageFilename() {
@@ -104,17 +114,23 @@
   function requireAdminRedirect() {
     if (!isLoggedIn()) {
       sessionStorage.setItem("redirectAfterLogin", getCurrentPageFilename());
-      location.replace("login.html");
+      location.replace("admin-login.html");
       return;
     }
     if (!isAdmin()) {
-      location.replace("user-panel.html");
-      return;
+      location.replace("index.html");
     }
   }
 
   function registerUser(email, password) {
     var normalized = (email || "").trim().toLowerCase();
+    if (normalized === ADMIN_EMAIL) {
+      return {
+        ok: false,
+        error:
+          "Bu e-posta yönetici hesabı için ayrılmıştır; buradan kayıt olunamaz.",
+      };
+    }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) {
       return { ok: false, error: "Geçerli bir e-posta adresi girin." };
     }
@@ -122,9 +138,11 @@
       return { ok: false, error: "Şifre en az 6 karakter olmalıdır." };
     }
     var users = getUsers();
-    if (users.some(function (u) {
-      return u.email === normalized;
-    })) {
+    if (
+      users.some(function (u) {
+        return u.email === normalized;
+      })
+    ) {
       return { ok: false, error: "Bu e-posta ile zaten kayıt var." };
     }
     users.push({
@@ -138,6 +156,13 @@
 
   function loginUser(email, password) {
     var normalized = (email || "").trim().toLowerCase();
+    if (normalized === ADMIN_EMAIL) {
+      return {
+        ok: false,
+        error:
+          "Yönetici hesabı için müşteri girişi kullanılamaz. Yönetici giriş sayfasına gidin.",
+      };
+    }
     var users = getUsers();
     var user = users.find(function (u) {
       return u.email === normalized;
@@ -152,7 +177,26 @@
     if (user.passwordHash !== hashPassword(password)) {
       return { ok: false, error: "Şifre yanlış." };
     }
-    setSession(normalized, user.role || "user");
+    setSession(normalized, "user");
+    return { ok: true };
+  }
+
+  function loginAdmin(email, password) {
+    var normalized = (email || "").trim().toLowerCase();
+    if (normalized !== ADMIN_EMAIL) {
+      return { ok: false, error: "Bu sayfa sadece yönetici hesabı içindir." };
+    }
+    var users = getUsers();
+    var user = users.find(function (u) {
+      return u.email === normalized;
+    });
+    if (!user) {
+      return { ok: false, error: "Yönetici hesabı bulunamadı." };
+    }
+    if (user.passwordHash !== hashPassword(password)) {
+      return { ok: false, error: "Şifre yanlış." };
+    }
+    setSession(normalized, "admin");
     return { ok: true };
   }
 
@@ -164,6 +208,7 @@
   ensureDefaultAdmin();
 
   window.shopAuth = {
+    ADMIN_EMAIL: ADMIN_EMAIL,
     hashPassword: hashPassword,
     getUsers: getUsers,
     isLoggedIn: isLoggedIn,
@@ -174,6 +219,7 @@
     requireAdminRedirect: requireAdminRedirect,
     registerUser: registerUser,
     loginUser: loginUser,
+    loginAdmin: loginAdmin,
     logout: logout,
     getCurrentPageFilename: getCurrentPageFilename,
   };
@@ -206,8 +252,9 @@
 
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
+        var wasAdmin = isAdmin();
         logout();
-        location.href = "login.html";
+        location.href = wasAdmin ? "admin-login.html" : "login.html";
       });
     }
   });
