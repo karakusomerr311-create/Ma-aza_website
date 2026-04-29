@@ -24,6 +24,65 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMiniCart(existing);
   }
 
+  function getFavorites() {
+    return JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+  }
+
+  function saveFavorites(items) {
+    localStorage.setItem("favoriteItems", JSON.stringify(items));
+  }
+
+  function addToFavorites(product) {
+    const existing = getFavorites();
+    const foundIndex = existing.findIndex((item) => item.name === product.name);
+
+    if (foundIndex !== -1) {
+      return { added: false };
+    }
+
+    existing.push(product);
+    saveFavorites(existing);
+    return { added: true };
+  }
+
+  function createFavoriteButtons() {
+    productBoxes.forEach((box) => {
+      const bottom = box.querySelector(".box-bottom");
+      const nameEl = box.querySelector(".box-head h3");
+      const priceEl = box.querySelector(".box-head .price");
+      const imgEl = box.querySelector(".box-head img");
+
+      if (!bottom || !nameEl || !priceEl || !imgEl) return;
+
+      const favoriteBtn = document.createElement("a");
+      favoriteBtn.href = "#";
+      favoriteBtn.className = "btn btn-favorite";
+      favoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Favori';
+
+      favoriteBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const product = {
+          name: nameEl.textContent.trim(),
+          price: priceEl.childNodes[0].textContent.trim(),
+          image: imgEl.getAttribute("src"),
+        };
+
+        const { added } = addToFavorites(product);
+        if (added) {
+          favoriteBtn.classList.add("is-favorited");
+          favoriteBtn.innerHTML = '<i class="fas fa-check"></i> Eklendi';
+        } else {
+          favoriteBtn.classList.add("is-favorited");
+          favoriteBtn.innerHTML = '<i class="fas fa-check"></i> Favoride';
+        }
+      });
+
+      bottom.appendChild(favoriteBtn);
+    });
+  }
+
   // Header içindeki küçük sepeti günceller
   function renderMiniCart(items) {
     const container = document.querySelector(".cart-items-container");
@@ -87,6 +146,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const initialItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
   renderMiniCart(initialItems);
 
+  function createProductCatalog() {
+    const catalog = [];
+
+    productBoxes.forEach((box, index) => {
+      const category = box.querySelector(".menu-category")?.textContent?.trim() || "";
+      const name = box.querySelector(".box-head h3")?.textContent?.trim() || "";
+      const priceEl = box.querySelector(".box-head .price");
+      const image = box.querySelector(".box-head img")?.getAttribute("src") || "";
+      const currentPrice = priceEl?.childNodes[0]?.textContent?.trim() || "";
+      const oldPrice = priceEl?.querySelector("span")?.textContent?.trim() || "";
+      const id = `p-${index + 1}`;
+
+      box.dataset.productId = id;
+
+      if (!name || !currentPrice || !image) return;
+
+      catalog.push({
+        id,
+        name,
+        category,
+        price: currentPrice,
+        oldPrice,
+        image,
+        rating: "4.7",
+        reviews: 127 + index,
+        seller: "Magaza Official",
+        shipping: "Kargo ücretsiz",
+        description:
+          "Kaliteli kumaş ve modern kalıp ile günlük kullanıma uygun olarak tasarlanmıştır. Uzun süreli kullanım için dayanıklı dikiş detaylarına sahiptir.",
+      });
+    });
+
+    localStorage.setItem("productCatalog", JSON.stringify(catalog));
+  }
+
+  function bindProductCardNavigation() {
+    productBoxes.forEach((box) => {
+      const head = box.querySelector(".box-head");
+      const id = box.dataset.productId;
+      if (!head || !id) return;
+
+      head.style.cursor = "pointer";
+      head.addEventListener("click", () => {
+        window.location.href = `urun-detay.html?id=${encodeURIComponent(id)}`;
+      });
+    });
+  }
+
   function normalizeText(value) {
     return (value || "")
       .toString()
@@ -142,6 +249,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fillCategoryOptions();
+  createProductCatalog();
+  createFavoriteButtons();
+  bindProductCardNavigation();
   applyProductFilters();
 
   if (categoryFilterEl) {

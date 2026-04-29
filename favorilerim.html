@@ -11,7 +11,7 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  <title>Sepetim</title>
+  <title>Favorilerim</title>
   <script src="./auth.js"></script>
 </head>
 <body>
@@ -22,8 +22,8 @@
     <nav class="navbar">
       <a href="index.html#Home">Ana sayfa</a>
       <a href="index.html#products">Ürünler</a>
+      <a href="favorilerim.html" class="active">Favorilerim</a>
       <a href="hakkinda.html">Hakkında</a>
-      <a href="yorumlar.html">Yorumlar</a>
       <a href="iletisim.html">İletişim</a>
     </nav>
     <div class="Butonlar">
@@ -34,48 +34,22 @@
       <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
         Çıkış
       </button>
-      <a href="index.html" id="back-btn" class="btn">Alışverişe dön</a>
+      <a id="cart-btn" href="cart.html">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
     </div>
   </header>
 
-  <section class="cart-page" id="cart">
-    <div class="cart-v2-layout">
-      <div class="cart-v2-main">
-        <div class="cart-v2-header">
-          <h1>Sepetim</h1>
-          <p>Ürün miktarını artırıp azaltabilir, tek tek silebilir veya sepeti tamamen temizleyebilirsiniz.</p>
-        </div>
-        <div id="cart-list" class="cart-v2-list"></div>
+  <section class="favorites-page">
+    <div class="favorites-layout">
+      <div class="favorites-header">
+        <h1 class="heading">Favorilerim</h1>
+        <p class="cart-subtitle">Beğendiğiniz ürünleri burada takip edebilirsiniz.</p>
       </div>
-
-      <aside class="cart-v2-summary">
-        <div class="cart-v2-summary-card">
-          <h2>Sipariş Özeti</h2>
-          <div class="cart-v2-row">
-            <span>Ürün adedi</span>
-            <strong id="cart-item-count">0</strong>
-          </div>
-          <div class="cart-v2-row">
-            <span>Ara toplam</span>
-            <strong id="cart-total">0 TL</strong>
-          </div>
-          <div class="cart-v2-row cart-v2-row--muted">
-            <span>Kargo</span>
-            <span>Ücretsiz</span>
-          </div>
-          <div class="cart-v2-divider"></div>
-          <div class="cart-v2-row cart-v2-row--grand">
-            <span>Genel toplam</span>
-            <strong id="cart-total-display">0 TL</strong>
-          </div>
-          <button id="cart-clear" class="btn cart-v2-clear-btn">Sepeti Temizle</button>
-          <button class="btn cart-v2-checkout-btn" disabled>Siparişi Tamamla (Demo)</button>
-        </div>
-      </aside>
+      <div id="favorite-list" class="favorites-list"></div>
     </div>
   </section>
 
-  <script src="./cart.js"></script>
+  <script src="./favorilerim.js"></script>
 </body>
 </html>
-

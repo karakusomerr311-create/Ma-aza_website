@@ -11,7 +11,7 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  <title>Sepetim</title>
+  <title>İletişim</title>
   <script src="./auth.js"></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
       <a href="index.html#products">Ürünler</a>
       <a href="hakkinda.html">Hakkında</a>
       <a href="yorumlar.html">Yorumlar</a>
-      <a href="iletisim.html">İletişim</a>
+      <a href="iletisim.html" class="active">İletişim</a>
     </nav>
     <div class="Butonlar">
       <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link" style="display: none">Hesabım</a>
@@ -34,48 +34,22 @@
       <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
         Çıkış
       </button>
-      <a href="index.html" id="back-btn" class="btn">Alışverişe dön</a>
     </div>
   </header>
 
-  <section class="cart-page" id="cart">
-    <div class="cart-v2-layout">
-      <div class="cart-v2-main">
-        <div class="cart-v2-header">
-          <h1>Sepetim</h1>
-          <p>Ürün miktarını artırıp azaltabilir, tek tek silebilir veya sepeti tamamen temizleyebilirsiniz.</p>
-        </div>
-        <div id="cart-list" class="cart-v2-list"></div>
+  <section class="info-page">
+    <div class="info-card">
+      <h1 class="info-title">İletişim</h1>
+      <p class="info-text">
+        Bizimle iletişime geçmek için aşağıdaki kanalları kullanabilirsiniz. Mesajlarınıza en kısa sürede dönüş sağlıyoruz.
+      </p>
+      <div class="contact-list">
+        <p><strong>E-posta:</strong> ömer.batuhan@gmail.com</p>
+        <p><strong>Telefon:</strong> +90 555 000 00 00</p>
+        <p><strong>Adres:</strong> Hatay, Türkiye</p>
       </div>
-
-      <aside class="cart-v2-summary">
-        <div class="cart-v2-summary-card">
-          <h2>Sipariş Özeti</h2>
-          <div class="cart-v2-row">
-            <span>Ürün adedi</span>
-            <strong id="cart-item-count">0</strong>
-          </div>
-          <div class="cart-v2-row">
-            <span>Ara toplam</span>
-            <strong id="cart-total">0 TL</strong>
-          </div>
-          <div class="cart-v2-row cart-v2-row--muted">
-            <span>Kargo</span>
-            <span>Ücretsiz</span>
-          </div>
-          <div class="cart-v2-divider"></div>
-          <div class="cart-v2-row cart-v2-row--grand">
-            <span>Genel toplam</span>
-            <strong id="cart-total-display">0 TL</strong>
-          </div>
-          <button id="cart-clear" class="btn cart-v2-clear-btn">Sepeti Temizle</button>
-          <button class="btn cart-v2-checkout-btn" disabled>Siparişi Tamamla (Demo)</button>
-        </div>
-      </aside>
+      <a href="index.html" class="btn info-btn">Ana sayfaya dön</a>
     </div>
   </section>
-
-  <script src="./cart.js"></script>
 </body>
 </html>
-

@@ -11,7 +11,7 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  <title>Sepetim</title>
+  <title>Yorumlar</title>
   <script src="./auth.js"></script>
 </head>
 <body>
@@ -23,7 +23,7 @@
       <a href="index.html#Home">Ana sayfa</a>
       <a href="index.html#products">Ürünler</a>
       <a href="hakkinda.html">Hakkında</a>
-      <a href="yorumlar.html">Yorumlar</a>
+      <a href="yorumlar.html" class="active">Yorumlar</a>
       <a href="iletisim.html">İletişim</a>
     </nav>
     <div class="Butonlar">
@@ -34,48 +34,28 @@
       <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
         Çıkış
       </button>
-      <a href="index.html" id="back-btn" class="btn">Alışverişe dön</a>
     </div>
   </header>
 
-  <section class="cart-page" id="cart">
-    <div class="cart-v2-layout">
-      <div class="cart-v2-main">
-        <div class="cart-v2-header">
-          <h1>Sepetim</h1>
-          <p>Ürün miktarını artırıp azaltabilir, tek tek silebilir veya sepeti tamamen temizleyebilirsiniz.</p>
+  <section class="info-page">
+    <div class="info-card">
+      <h1 class="info-title">Müşteri Yorumları</h1>
+      <div class="review-list">
+        <div class="review-item">
+          <h3>Ahmet K.</h3>
+          <p>Ürün kalitesi ve teslimat hızı gerçekten çok iyi. Kesinlikle tekrar alışveriş yaparım.</p>
         </div>
-        <div id="cart-list" class="cart-v2-list"></div>
+        <div class="review-item">
+          <h3>Mehmet T.</h3>
+          <p>Beden tablosu doğruydu ve ürün görseldeki gibi geldi. Memnun kaldım.</p>
+        </div>
+        <div class="review-item">
+          <h3>Onur D.</h3>
+          <p>Destek ekibi sorularıma hızlı cevap verdi. Güvenilir bir mağaza.</p>
+        </div>
       </div>
-
-      <aside class="cart-v2-summary">
-        <div class="cart-v2-summary-card">
-          <h2>Sipariş Özeti</h2>
-          <div class="cart-v2-row">
-            <span>Ürün adedi</span>
-            <strong id="cart-item-count">0</strong>
-          </div>
-          <div class="cart-v2-row">
-            <span>Ara toplam</span>
-            <strong id="cart-total">0 TL</strong>
-          </div>
-          <div class="cart-v2-row cart-v2-row--muted">
-            <span>Kargo</span>
-            <span>Ücretsiz</span>
-          </div>
-          <div class="cart-v2-divider"></div>
-          <div class="cart-v2-row cart-v2-row--grand">
-            <span>Genel toplam</span>
-            <strong id="cart-total-display">0 TL</strong>
-          </div>
-          <button id="cart-clear" class="btn cart-v2-clear-btn">Sepeti Temizle</button>
-          <button class="btn cart-v2-checkout-btn" disabled>Siparişi Tamamla (Demo)</button>
-        </div>
-      </aside>
+      <a href="index.html" class="btn info-btn">Ana sayfaya dön</a>
     </div>
   </section>
-
-  <script src="./cart.js"></script>
 </body>
 </html>
-

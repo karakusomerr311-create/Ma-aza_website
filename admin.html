@@ -36,103 +36,210 @@
     </div>
   </header>
 
-  <section class="panel-page panel-page--admin">
-    <div class="panel-header-block">
-      <h1 class="panel-title">Admin paneli</h1>
-      <p class="panel-intro">
-        Oturum: <strong id="admin-session-email">—</strong>. Sipariş ve kargo takip kayıtlarını buradan yönetebilirsiniz.
+  <section class="admin-v2-page">
+    <div class="admin-v2-header">
+      <h1>Yönetim Paneli</h1>
+      <p>
+        Oturum: <strong id="admin-session-email">—</strong>. Kullanıcı, ürün, sipariş ve kargo süreçlerini tek panelden yönetin.
       </p>
     </div>
 
-    <div class="admin-stats">
-      <div class="admin-stat-card">
-        <span class="admin-stat-label">Kayıtlı kullanıcı</span>
-        <span class="admin-stat-value" id="admin-user-count">0</span>
-      </div>
-      <div class="admin-stat-card">
-        <span class="admin-stat-label">Aktif takip kaydı</span>
-        <span class="admin-stat-value" id="admin-tracking-count">0</span>
-      </div>
+    <div class="admin-v2-stats">
+      <article class="admin-v2-stat-card">
+        <span>Toplam Kullanıcı</span>
+        <strong id="admin-user-count">0</strong>
+      </article>
+      <article class="admin-v2-stat-card">
+        <span>Toplam Ürün</span>
+        <strong id="admin-product-count">0</strong>
+      </article>
+      <article class="admin-v2-stat-card">
+        <span>Toplam Sipariş / Takip</span>
+        <strong id="admin-order-count">0</strong>
+      </article>
+      <article class="admin-v2-stat-card">
+        <span>Kargoda Olanlar</span>
+        <strong id="admin-in-transit-count">0</strong>
+      </article>
     </div>
 
-    <div class="admin-tracking-block">
-      <h2><i class="fas fa-truck"></i> Sipariş takibi</h2>
-      <p class="panel-intro" style="margin-top: -0.5rem">
-        Yeni kayıt ekleyin veya tablodan düzenleyin / silin. Müşteriler kendi e-postalarıyla eşleşen kayıtları kullanıcı panelinde görür.
-      </p>
+    <div class="admin-v2-grid">
+      <section class="admin-v2-card">
+        <div class="admin-v2-card-head">
+          <h2><i class="fas fa-users"></i> Kullanıcı Takibi</h2>
+        </div>
+        <div class="admin-v2-table-wrap">
+          <table class="admin-v2-table">
+            <thead>
+              <tr>
+                <th>E-posta</th>
+                <th>Rol</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-tbody"></tbody>
+          </table>
+        </div>
+      </section>
 
-      <form id="admin-tracking-form" class="admin-tracking-form" novalidate>
-        <div>
-          <label for="track-customer-email">Müşteri e-postası</label>
-          <input type="email" id="track-customer-email" class="search-input" required placeholder="musteri@mail.com" />
+      <section class="admin-v2-card">
+        <div class="admin-v2-card-head">
+          <h2><i class="fas fa-box-open"></i> Ürün Ekleme</h2>
         </div>
-        <div>
-          <label for="track-order-label">Sipariş / referans</label>
-          <input type="text" id="track-order-label" class="search-input" placeholder="Örn. Sipariş #1024" />
+        <form id="admin-product-form" class="admin-v2-form" novalidate>
+          <div>
+            <label for="admin-product-name">Ürün adı</label>
+            <input id="admin-product-name" type="text" class="search-input" required />
+          </div>
+          <div>
+            <label for="admin-product-category">Kategori</label>
+            <input id="admin-product-category" type="text" class="search-input" required />
+          </div>
+          <div>
+            <label for="admin-product-price">Fiyat</label>
+            <input id="admin-product-price" type="text" class="search-input" placeholder="Örn. 499 TL" required />
+          </div>
+          <div>
+            <label for="admin-product-old-price">Eski fiyat</label>
+            <input id="admin-product-old-price" type="text" class="search-input" placeholder="Opsiyonel" />
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label for="admin-product-image">Görsel yolu</label>
+            <input id="admin-product-image" type="text" class="search-input" placeholder="images/urun.jpg" required />
+          </div>
+          <div>
+            <label for="admin-product-stock">Stok</label>
+            <input id="admin-product-stock" type="number" min="0" class="search-input" value="10" required />
+          </div>
+          <div>
+            <label for="admin-product-status">Durum</label>
+            <select id="admin-product-status" class="search-input">
+              <option value="Aktif">Aktif</option>
+              <option value="Pasif">Pasif</option>
+            </select>
+          </div>
+          <div style="grid-column: 1 / -1">
+            <button type="submit" class="btn">Ürün Ekle</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-v2-card admin-v2-card--full">
+        <div class="admin-v2-card-head">
+          <h2><i class="fas fa-tags"></i> Ürün Listesi</h2>
         </div>
-        <div>
-          <label for="track-status">Durum</label>
-          <select id="track-status" class="search-input">
-            <option>Hazırlanıyor</option>
-            <option>Kargoda</option>
-            <option>Teslim edildi</option>
-            <option>İptal</option>
+        <div class="admin-v2-table-wrap">
+          <table class="admin-v2-table">
+            <thead>
+              <tr>
+                <th>Ürün</th>
+                <th>Kategori</th>
+                <th>Fiyat</th>
+                <th>Stok</th>
+                <th>Kaynak</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-v2-card admin-v2-card--full">
+        <div class="admin-v2-card-head">
+          <h2><i class="fas fa-receipt"></i> Sipariş Detayları</h2>
+        </div>
+        <div class="admin-v2-order-filters">
+          <input id="admin-order-search" type="text" class="search-input" placeholder="E-posta veya sipariş no ara..." />
+          <select id="admin-order-status-filter" class="search-input">
+            <option value="all">Tüm durumlar</option>
+            <option value="Hazırlanıyor">Hazırlanıyor</option>
+            <option value="Kargoda">Kargoda</option>
+            <option value="Teslim edildi">Teslim edildi</option>
+            <option value="İptal">İptal</option>
           </select>
         </div>
-        <div>
-          <label for="track-carrier">Kargo firması</label>
-          <input type="text" id="track-carrier" class="search-input" placeholder="Opsiyonel" />
+        <div class="admin-v2-table-wrap">
+          <table class="admin-v2-table">
+            <thead>
+              <tr>
+                <th>Tarih</th>
+                <th>Müşteri</th>
+                <th>Sipariş</th>
+                <th>Durum</th>
+                <th>Kargo / Takip</th>
+                <th>Detay</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody"></tbody>
+          </table>
         </div>
-        <div>
-          <label for="track-code">Takip numarası</label>
-          <input type="text" id="track-code" class="search-input" placeholder="Opsiyonel" />
-        </div>
-        <div style="grid-column: 1 / -1">
-          <label for="track-note">Not</label>
-          <textarea id="track-note" class="search-input" rows="2" placeholder="İç not veya müşteriye görünen açıklama"></textarea>
-        </div>
-        <div style="grid-column: 1 / -1">
-          <button type="submit" class="btn">Takip kaydı ekle</button>
-        </div>
-      </form>
+      </section>
 
-      <div class="admin-tracking-table-wrap">
-        <table class="admin-tracking-table" id="admin-tracking-table">
-          <thead>
-            <tr>
-              <th>Tarih</th>
-              <th>Müşteri</th>
-              <th>Sipariş</th>
-              <th>Durum</th>
-              <th>Kargo / takip</th>
-              <th>İşlem</th>
-            </tr>
-          </thead>
-          <tbody id="admin-tracking-tbody"></tbody>
-        </table>
+      <section class="admin-v2-card admin-v2-card--full">
+        <div class="admin-v2-card-head">
+          <h2><i class="fas fa-truck"></i> Kargo Takip Yönetimi</h2>
+        </div>
+        <form id="admin-tracking-form" class="admin-v2-form" novalidate>
+          <div>
+            <label for="track-customer-email">Müşteri e-postası</label>
+            <input type="email" id="track-customer-email" class="search-input" required />
+          </div>
+          <div>
+            <label for="track-order-label">Sipariş / referans</label>
+            <input type="text" id="track-order-label" class="search-input" required />
+          </div>
+          <div>
+            <label for="track-status">Durum</label>
+            <select id="track-status" class="search-input">
+              <option>Hazırlanıyor</option>
+              <option>Kargoda</option>
+              <option>Teslim edildi</option>
+              <option>İptal</option>
+            </select>
+          </div>
+          <div>
+            <label for="track-carrier">Kargo firması</label>
+            <input type="text" id="track-carrier" class="search-input" />
+          </div>
+          <div>
+            <label for="track-code">Takip numarası</label>
+            <input type="text" id="track-code" class="search-input" />
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label for="track-note">Not</label>
+            <textarea id="track-note" class="search-input" rows="2"></textarea>
+          </div>
+          <div style="grid-column: 1 / -1">
+            <button type="submit" class="btn">Takip Kaydı Ekle</button>
+          </div>
+        </form>
+
+        <div class="admin-v2-table-wrap">
+          <table class="admin-v2-table">
+            <thead>
+              <tr>
+                <th>Tarih</th>
+                <th>Müşteri</th>
+                <th>Sipariş</th>
+                <th>Durum</th>
+                <th>Kargo / Takip</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="admin-tracking-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-v2-modal" id="admin-order-modal" aria-hidden="true">
+      <div class="admin-v2-modal-card">
+        <button type="button" class="admin-v2-modal-close" id="admin-order-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <h3>Sipariş Detayı</h3>
+        <div id="admin-order-modal-content" class="admin-v2-modal-content"></div>
       </div>
-    </div>
-
-    <div class="panel-grid panel-grid--admin" style="margin-top: 2rem">
-      <article class="panel-card">
-        <div class="panel-card-icon"><i class="fas fa-box"></i></div>
-        <h2>Ürünler</h2>
-        <p>Ürünler ana sayfadaki HTML ile tanımlıdır.</p>
-        <a href="index.html#products" class="btn panel-card-btn">Ürünleri gör</a>
-      </article>
-      <article class="panel-card">
-        <div class="panel-card-icon"><i class="fas fa-users"></i></div>
-        <h2>Kullanıcılar</h2>
-        <p>Kayıtlı kullanıcılar tarayıcıda (localStorage) saklanır.</p>
-      </article>
-    </div>
-
-    <div class="admin-demo-note">
-      <strong>Yönetici hesabı:</strong>
-      yalnızca <code>admin@gmail.com</code> ile
-      <a href="admin-login.html" style="color: #fca5a5">yönetici girişi</a>
-      yapılabilir. İlk açılışta şifre <code>admin123</code> olarak oluşturulur; üretimde mutlaka değiştirin.
-    </div>
   </section>
 
   <script src="./admin.js"></script>

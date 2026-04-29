@@ -11,7 +11,7 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  <title>Sepetim</title>
+  <title>Ürün Detayı</title>
   <script src="./auth.js"></script>
 </head>
 <body>
@@ -34,48 +34,16 @@
       <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
         Çıkış
       </button>
-      <a href="index.html" id="back-btn" class="btn">Alışverişe dön</a>
+      <a id="cart-btn" href="cart.html">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
     </div>
   </header>
 
-  <section class="cart-page" id="cart">
-    <div class="cart-v2-layout">
-      <div class="cart-v2-main">
-        <div class="cart-v2-header">
-          <h1>Sepetim</h1>
-          <p>Ürün miktarını artırıp azaltabilir, tek tek silebilir veya sepeti tamamen temizleyebilirsiniz.</p>
-        </div>
-        <div id="cart-list" class="cart-v2-list"></div>
-      </div>
-
-      <aside class="cart-v2-summary">
-        <div class="cart-v2-summary-card">
-          <h2>Sipariş Özeti</h2>
-          <div class="cart-v2-row">
-            <span>Ürün adedi</span>
-            <strong id="cart-item-count">0</strong>
-          </div>
-          <div class="cart-v2-row">
-            <span>Ara toplam</span>
-            <strong id="cart-total">0 TL</strong>
-          </div>
-          <div class="cart-v2-row cart-v2-row--muted">
-            <span>Kargo</span>
-            <span>Ücretsiz</span>
-          </div>
-          <div class="cart-v2-divider"></div>
-          <div class="cart-v2-row cart-v2-row--grand">
-            <span>Genel toplam</span>
-            <strong id="cart-total-display">0 TL</strong>
-          </div>
-          <button id="cart-clear" class="btn cart-v2-clear-btn">Sepeti Temizle</button>
-          <button class="btn cart-v2-checkout-btn" disabled>Siparişi Tamamla (Demo)</button>
-        </div>
-      </aside>
-    </div>
+  <section class="product-detail-page">
+    <div id="product-detail" class="product-detail-layout"></div>
   </section>
 
-  <script src="./cart.js"></script>
+  <script src="./urun-detay.js"></script>
 </body>
 </html>
-
