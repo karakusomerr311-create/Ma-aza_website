@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Sipariş Tamamlama</title>
+  <script src="../js/auth.js"></script>
+  <script src="../js/tracking.js"></script>
+  <script>
+    if (window.shopAuth) shopAuth.requireAuthRedirect();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="../images/LOGO FOTO.jpeg" alt="logo" />
+    </a>
+    <nav class="navbar">
+      <a href="index.html#Home">Ana sayfa</a>
+      <a href="index.html#products">Ürünler</a>
+      <a href="cart.html">Sepet</a>
+      <a href="user-panel.html">Hesabım</a>
+    </nav>
+    <div class="Butonlar">
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
+        Çıkış
+      </button>
+      <a href="cart.html" class="btn">Sepete dön</a>
+    </div>
+  </header>
+
+  <section class="checkout-page">
+    <div class="checkout-layout">
+      <form id="checkout-form" class="checkout-card" novalidate>
+        <h1>Sipariş Bilgileri</h1>
+        <p class="checkout-subtitle">Bilgilerinizi girip ödeme yöntemini seçtikten sonra siparişinizi oluşturabilirsiniz.</p>
+
+        <div class="checkout-grid">
+          <div>
+            <label for="checkout-fullname">Ad Soyad</label>
+            <input id="checkout-fullname" class="search-input" type="text" required />
+          </div>
+          <div>
+            <label for="checkout-phone">Telefon Numarası</label>
+            <input id="checkout-phone" class="search-input" type="tel" required placeholder="05xx xxx xx xx" />
+          </div>
+          <div>
+            <label for="checkout-email">E-posta</label>
+            <input id="checkout-email" class="search-input" type="email" required />
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label for="checkout-address">Ev Adresi</label>
+            <textarea id="checkout-address" class="search-input" rows="3" required></textarea>
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label for="checkout-payment">Ödeme Yöntemi</label>
+            <select id="checkout-payment" class="search-input" required>
+              <option value="">Seçiniz</option>
+              <option value="Kapıda Ödeme">Kapıda Ödeme</option>
+              <option value="Kart ile Ödeme">Kart ile Ödeme</option>
+            </select>
+          </div>
+
+          <div id="checkout-card-fields" class="checkout-card-fields" style="grid-column: 1 / -1; display: none;">
+            <div class="checkout-grid">
+              <div style="grid-column: 1 / -1">
+                <label for="checkout-card-name">Kart Üzerindeki İsim</label>
+                <input id="checkout-card-name" class="search-input" type="text" />
+              </div>
+              <div style="grid-column: 1 / -1">
+                <label for="checkout-card-number">Kart Numarası</label>
+                <input id="checkout-card-number" class="search-input" type="text" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" />
+              </div>
+              <div>
+                <label for="checkout-card-expiry">Son Kullanma (AA/YY)</label>
+                <input id="checkout-card-expiry" class="search-input" type="text" inputmode="numeric" placeholder="12/30" maxlength="5" />
+              </div>
+              <div>
+                <label for="checkout-card-cvv">CVV</label>
+                <input id="checkout-card-cvv" class="search-input" type="password" inputmode="numeric" placeholder="123" maxlength="4" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="checkout-error" class="auth-error" role="alert"></p>
+        <button type="submit" class="btn checkout-submit">Siparişi Tamamla</button>
+      </form>
+
+      <aside class="checkout-card checkout-summary">
+        <h2>Sipariş Özeti</h2>
+        <div id="checkout-items" class="checkout-items"></div>
+        <div class="checkout-total-row">
+          <span>Toplam</span>
+          <strong id="checkout-total">0 TL</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script src="../js/checkout.js"></script>
+</body>
+</html>
+
+

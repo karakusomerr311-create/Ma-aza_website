@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Hesabım</title>
+  <script src="../js/auth.js"></script>
+  <script src="../js/tracking.js"></script>
+  <script>
+    if (window.shopAuth) shopAuth.requireAuthRedirect();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="../images/LOGO FOTO.jpeg" alt="logo" />
+    </a>
+    <nav class="navbar">
+      <a href="index.html#Home">Ana sayfa</a>
+      <a href="index.html#products">Ürünler</a>
+      <a href="cart.html">Sepetim</a>
+    </nav>
+    <div class="Butonlar">
+      <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link">Hesabım</a>
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn">
+        Çıkış
+      </button>
+      <a href="index.html" class="btn">Mağazaya dön</a>
+    </div>
+  </header>
+
+  <section class="panel-page">
+    <div class="panel-header-block">
+      <h1 class="panel-title">Kullanıcı paneli</h1>
+      <p class="panel-intro">
+        Giriş yaptığınız hesap:
+        <strong id="user-panel-email">—</strong>
+      </p>
+    </div>
+
+    <div class="panel-grid">
+      <article class="panel-card">
+        <div class="panel-card-icon"><i class="fas fa-shopping-bag"></i></div>
+        <h2>Sepetim</h2>
+        <p>Eklediğiniz ürünleri görüntüleyin ve düzenleyin.</p>
+        <a href="cart.html" class="btn panel-card-btn">Sepete git</a>
+      </article>
+      <article class="panel-card">
+        <div class="panel-card-icon"><i class="fas fa-user"></i></div>
+        <h2>Profil bilgileri</h2>
+        <p>Bu örnek projede profil düzenleme formu yoktur; e-posta oturumdan okunur.</p>
+      </article>
+      <article class="panel-card">
+        <div class="panel-card-icon"><i class="fas fa-receipt"></i></div>
+        <h2>Siparişlerim</h2>
+        <p>Gerçek bir mağazada burada sipariş geçmişi listelenir.</p>
+      </article>
+    </div>
+
+    <div class="panel-header-block" style="margin-top: 2.5rem">
+      <h2 class="panel-title" style="font-size: 2.2rem">Sipariş takibi</h2>
+      <p class="panel-intro">
+        Yönetici tarafından eklenen kargo ve sipariş durumları burada görünür.
+      </p>
+    </div>
+    <div id="user-tracking-root" class="user-tracking-list"></div>
+  </section>
+
+  <script src="../js/user-panel.js"></script>
+</body>
+</html>
+
+

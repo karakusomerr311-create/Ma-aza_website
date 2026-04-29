@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Sepetim</title>
+  <script src="../js/auth.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="../images/LOGO FOTO.jpeg" alt="logo" />
+    </a>
+    <nav class="navbar">
+      <a href="index.html#Home">Ana sayfa</a>
+      <a href="index.html#products">Ürünler</a>
+      <a href="hakkinda.html">Hakkında</a>
+      <a href="yorumlar.html">Yorumlar</a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+    <div class="Butonlar">
+      <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link" style="display: none">Hesabım</a>
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+      <a href="login.html" class="auth-nav-link" id="auth-login-link">Giriş</a>
+      <a href="register.html" class="auth-nav-link" id="auth-register-link">Kayıt Ol</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
+        Çıkış
+      </button>
+      <a href="index.html" id="back-btn" class="btn">Alışverişe dön</a>
+    </div>
+  </header>
+
+  <section class="cart-page" id="cart">
+    <div class="cart-v2-layout">
+      <div class="cart-v2-main">
+        <div class="cart-v2-header">
+          <h1>Sepetim</h1>
+          <p>Ürün miktarını artırıp azaltabilir, tek tek silebilir veya sepeti tamamen temizleyebilirsiniz.</p>
+        </div>
+        <div id="cart-list" class="cart-v2-list"></div>
+      </div>
+
+      <aside class="cart-v2-summary">
+        <div class="cart-v2-summary-card">
+          <h2>Sipariş Özeti</h2>
+          <div class="cart-v2-row">
+            <span>Ürün adedi</span>
+            <strong id="cart-item-count">0</strong>
+          </div>
+          <div class="cart-v2-row">
+            <span>Ara toplam</span>
+            <strong id="cart-total">0 TL</strong>
+          </div>
+          <div class="cart-v2-row cart-v2-row--muted">
+            <span>Kargo</span>
+            <span>Ücretsiz</span>
+          </div>
+          <div class="cart-v2-divider"></div>
+          <div class="cart-v2-row cart-v2-row--grand">
+            <span>Genel toplam</span>
+            <strong id="cart-total-display">0 TL</strong>
+          </div>
+          <button id="cart-clear" class="btn cart-v2-clear-btn">Sepeti Temizle</button>
+          <button id="cart-checkout" class="btn cart-v2-checkout-btn" disabled>Siparişi Tamamla</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script src="../js/cart.js"></script>
+</body>
+</html>
+
+
+

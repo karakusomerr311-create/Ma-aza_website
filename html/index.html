@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Mağaza</title>
+  <script src="../js/auth.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo"><img src="../images/LOGO FOTO.jpeg" alt="logo" /></a>
+    <nav class="navbar">
+      <a href="#Home">Ana sayfa</a>
+      <a href="#products">Ürünler</a>
+      <a href="hakkinda.html">Hakkında</a>
+      <a href="yorumlar.html">Yorumlar</a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+
+    <div class="Butonlar">
+      <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link" style="display: none">Hesabım</a>
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+      <a href="login.html" class="auth-nav-link" id="auth-login-link">Giriş</a>
+      <a href="register.html" class="auth-nav-link" id="auth-register-link">Kayıt Ol</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">Çıkış</button>
+      <button id="search-btn"><i class="fas fa-search"></i></button>
+      <a id="cart-btn" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+      <a id="favorites-btn" href="favorilerim.html"><i class="fas fa-heart"></i></a>
+      <button id="menu-btn"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="search-form">
+      <input type="text" class="search-input" id="search-box" placeholder="search here" />
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="cart-items-container"></div>
+  </header>
+
+  <section class="home" id="Home">
+    <div class="content">
+      <h3>Kaliteli Ürünler ile Sizlerleyiz</h3>
+      <p>En kaliteli kumaşlar ve kusursuz işçilik ile üretilen ürünlerimiz konfor ve şıklığı aynı anda sunar.</p>
+      <a href="#products" class="btn">Alışverişe Başla</a>
+    </div>
+  </section>
+
+  <section class="menu" id="products">
+    <h1 class="heading">ÜRÜNLER</h1>
+    <div class="product-controls">
+      <div class="control-item">
+        <label for="category-filter">Kategori</label>
+        <select id="category-filter" class="search-input">
+          <option value="all">Tüm Kategoriler</option>
+        </select>
+      </div>
+      <div class="control-item">
+        <label for="product-search">Ürün Ara</label>
+        <input type="text" id="product-search" class="search-input" placeholder="Ürün adı veya kategori yaz..." />
+      </div>
+    </div>
+    <p id="product-result-info" class="product-result-info"></p>
+    <div class="box-container" id="product-list-root"></div>
+  </section>
+
+  <script src="../js/index.js"></script>
+</body>
+</html>

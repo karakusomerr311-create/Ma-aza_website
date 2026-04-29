@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <title>Favorilerim</title>
+  <script src="../js/auth.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="../images/LOGO FOTO.jpeg" alt="logo" />
+    </a>
+    <nav class="navbar">
+      <a href="index.html#Home">Ana sayfa</a>
+      <a href="index.html#products">Ürünler</a>
+      <a href="favorilerim.html" class="active">Favorilerim</a>
+      <a href="hakkinda.html">Hakkında</a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+    <div class="Butonlar">
+      <a href="user-panel.html" class="auth-nav-link" id="auth-user-panel-link" style="display: none">Hesabım</a>
+      <a href="admin.html" class="auth-nav-link" id="auth-admin-link" style="display: none">Admin</a>
+      <a href="login.html" class="auth-nav-link" id="auth-login-link">Giriş</a>
+      <a href="register.html" class="auth-nav-link" id="auth-register-link">Kayıt Ol</a>
+      <button type="button" id="auth-logout-btn" class="auth-nav-link auth-logout-btn" style="display: none">
+        Çıkış
+      </button>
+      <a id="cart-btn" href="cart.html">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </div>
+  </header>
+
+  <section class="favorites-page">
+    <div class="favorites-layout">
+      <div class="favorites-header">
+        <h1 class="heading">Favorilerim</h1>
+        <p class="cart-subtitle">Beğendiğiniz ürünleri burada takip edebilirsiniz.</p>
+      </div>
+      <div id="favorite-list" class="favorites-list"></div>
+    </div>
+  </section>
+
+  <script src="../js/favorilerim.js"></script>
+</body>
+</html>
+
+
