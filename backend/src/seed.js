@@ -10,7 +10,7 @@ const seedProducts = [
     category: "Erkek Tişort",
     price: 350,
     oldPrice: 400,
-    image: "../images/oversize erkek tişort.jpg",
+    image: "/images/oversize erkek tişort.jpg",
     stock: 35,
     status: "Aktif"
   },
@@ -19,7 +19,7 @@ const seedProducts = [
     category: "Erkek Gömlek",
     price: 600,
     oldPrice: 650,
-    image: "../images/Erkek Beyaz Keten Gömlek.jpg",
+    image: "/images/Erkek Beyaz Keten Gömlek.jpg",
     stock: 24,
     status: "Aktif"
   },
@@ -28,7 +28,7 @@ const seedProducts = [
     category: "Erkek Pantolon",
     price: 600,
     oldPrice: 700,
-    image: "../images/Erkek Siyah Kot Pantolon.webp",
+    image: "/images/Erkek Siyah Kot Pantolon.webp",
     stock: 16,
     status: "Aktif"
   }

@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     el.textContent = shopAuth.currentUserEmail() || "—";
   }
 
+  renderFavorites();
+
   var root = document.getElementById("user-tracking-root");
   if (!root || !window.shopAuth || !window.shopTracking) return;
 
@@ -73,5 +75,67 @@ document.addEventListener("DOMContentLoaded", function () {
     var d = document.createElement("div");
     d.textContent = s;
     return d.innerHTML;
+  }
+
+  function renderFavorites() {
+    var favRoot = document.getElementById("user-favorites-root");
+    if (!favRoot) return;
+    var items = [];
+    try {
+      items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+    } catch {
+      items = [];
+    }
+
+    favRoot.innerHTML = "";
+    if (!items.length) {
+      favRoot.innerHTML =
+        '<div class="favorites-empty">Henüz favori ürününüz yok.<span>Ana sayfadan ürünleri favoriye ekleyebilirsiniz.</span></div>';
+      return;
+    }
+
+    items.forEach(function (item, index) {
+      var card = document.createElement("div");
+      card.className = "favorites-card";
+      card.innerHTML =
+        '<img src="' +
+        escape(item.image || "") +
+        '" alt="' +
+        escape(item.name || "Ürün") +
+        '" />' +
+        '<div class="favorites-card-content">' +
+        '<span class="menu-category">Favori Ürün</span>' +
+        "<h3>" +
+        escape(item.name || "") +
+        "</h3>" +
+        '<p class="price">' +
+        escape(item.price || "") +
+        "</p>" +
+        "</div>" +
+        '<div class="favorites-card-actions">' +
+        '<a href="urun-detay.html?id=' +
+        encodeURIComponent(item.id || "") +
+        '" class="btn">Detay</a>' +
+        '<button type="button" class="btn favorites-remove-btn" data-index="' +
+        index +
+        '">Kaldır</button>' +
+        "</div>";
+      favRoot.appendChild(card);
+    });
+
+    favRoot.querySelectorAll(".favorites-remove-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var i = Number(btn.getAttribute("data-index"));
+        var items = [];
+        try {
+          items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+        } catch {
+          items = [];
+        }
+        items.splice(i, 1);
+        localStorage.setItem("favoriteItems", JSON.stringify(items));
+        renderFavorites();
+      });
+    });
   }
 });

@@ -80,6 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var emailInput = document.getElementById("checkout-email");
   if (emailInput && currentEmail) {
     emailInput.value = currentEmail;
+    emailInput.setAttribute("readonly", "readonly");
+    emailInput.style.opacity = "0.9";
   }
 
   var cartItems = readCart();
@@ -111,6 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var fullName = document.getElementById("checkout-fullname").value.trim();
     var phone = document.getElementById("checkout-phone").value.trim();
     var email = document.getElementById("checkout-email").value.trim().toLowerCase();
+    if (currentEmail) {
+      email = String(currentEmail).trim().toLowerCase();
+    }
     var address = document.getElementById("checkout-address").value.trim();
     var payment = document.getElementById("checkout-payment").value;
 

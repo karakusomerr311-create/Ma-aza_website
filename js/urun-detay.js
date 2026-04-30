@@ -3,8 +3,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("id");
 
+  const BACKEND_ORIGIN = (() => {
+    const { protocol, hostname, port } = window.location;
+    const isStaticDevServer = port === "5500" || port === "3000" || port === "5173";
+    if (isStaticDevServer) return `${protocol}//${hostname}:5000`;
+    return window.location.origin;
+  })();
+
+  function resolveAssetUrl(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return raw;
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (raw.startsWith("/")) return BACKEND_ORIGIN + raw;
+    return raw;
+  }
+
   function formatPriceText(price) {
     return (price || "").trim();
+  }
+
+  function showToast(message) {
+    const text = String(message || "").trim();
+    if (!text) return;
+
+    const existing = document.querySelector(".toast");
+    if (existing) existing.remove();
+
+    const el = document.createElement("div");
+    el.className = "toast";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    el.innerHTML = `<i class="fas fa-check-circle"></i><span>${text}</span>`;
+    document.body.appendChild(el);
+
+    requestAnimationFrame(() => el.classList.add("is-visible"));
+
+    setTimeout(() => {
+      el.classList.remove("is-visible");
+      setTimeout(() => el.remove(), 220);
+    }, 1000);
   }
 
   function addToCart(product) {
@@ -19,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem(storageKey, JSON.stringify(existing));
+    showToast("Sepete eklendi");
   }
 
   function getReviewStorageKey(id) {
@@ -109,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   detailRoot.innerHTML = `
     <div class="product-gallery-card">
-      <img src="${product.image}" alt="${product.name}" class="product-main-image" />
+      <img src="${resolveAssetUrl(product.image)}" alt="${product.name}" class="product-main-image" />
     </div>
     <div class="product-info-card">
       <p class="product-breadcrumb">${product.category}</p>

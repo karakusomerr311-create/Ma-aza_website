@@ -1,7 +1,12 @@
 (function () {
   const SESSION_KEY = "shopSession";
   const ADMIN_EMAIL = "admin@gmail.com";
-  const API_BASE = window.location.origin + "/api";
+  const API_BASE = (() => {
+    const { protocol, hostname, port } = window.location;
+    const isStaticDevServer = port === "5500" || port === "3000" || port === "5173";
+    if (isStaticDevServer) return `${protocol}//${hostname}:5000/api`;
+    return window.location.origin + "/api";
+  })();
 
   function getSession() {
     try {

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backend/src/server.js",
     "dev": "node backend/src/server.js",
-    "seed": "node backend/src/seed.js"
+    "seed": "node backend/src/seed.js",
+    "seed:products": "node backend/src/seedMoreProducts.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

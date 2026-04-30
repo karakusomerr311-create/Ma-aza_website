@@ -7,6 +7,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.getElementById("cart-clear");
   const checkoutBtn = document.getElementById("cart-checkout");
 
+  const BACKEND_ORIGIN = (() => {
+    const { protocol, hostname, port } = window.location;
+    const isStaticDevServer = port === "5500" || port === "3000" || port === "5173";
+    if (isStaticDevServer) return `${protocol}//${hostname}:5000`;
+    return window.location.origin;
+  })();
+
+  function resolveAssetUrl(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return raw;
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (raw.startsWith("/")) return BACKEND_ORIGIN + raw;
+    return raw;
+  }
+
   function parsePriceToNumber(priceText) {
     // "350 TL" -> 350
     if (!priceText) return 0;
@@ -81,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("article");
       card.className = "cart-v2-item";
       card.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" class="cart-v2-image" />
+        <img src="${resolveAssetUrl(item.image)}" alt="${item.name}" class="cart-v2-image" />
         <div class="cart-v2-content">
           <p class="cart-v2-category">Sepet Ürünü</p>
           <h3>${item.name}</h3>

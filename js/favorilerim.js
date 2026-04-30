@@ -4,6 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!listEl) return;
 
+  const BACKEND_ORIGIN = (() => {
+    const { protocol, hostname, port } = window.location;
+    const isStaticDevServer = port === "5500" || port === "3000" || port === "5173";
+    if (isStaticDevServer) return `${protocol}//${hostname}:5000`;
+    return window.location.origin;
+  })();
+
+  function resolveAssetUrl(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return raw;
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (raw.startsWith("/")) return BACKEND_ORIGIN + raw;
+    return raw;
+  }
+
   function getFavorites() {
     return JSON.parse(localStorage.getItem(storageKey) || "[]");
   }
@@ -26,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = "favorites-card";
       card.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" />
+        <img src="${resolveAssetUrl(item.image)}" alt="${item.name}" />
         <div class="favorites-card-content">
           <span class="menu-category">Favori Ürün</span>
           <h3>${item.name}</h3>
